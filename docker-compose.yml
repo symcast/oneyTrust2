@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  front:
+    build: php72
+    container_name: front_container
+    ports:
+      - "8000:80"
+    volumes:
+      - ${PWD}/front/www:/var/www/html
+      - ${PWD}/front/vhosts:/etc/apache2/sites-enabled
+
+  api:
+    build: php72
+    container_name: api_container
+    ports:
+      - "8001:80"
+    volumes:
+      - ${PWD}/api/www:/var/www/html
+      - ${PWD}/api/vhosts:/etc/apache2/sites-enabled

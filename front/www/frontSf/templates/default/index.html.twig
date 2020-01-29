@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+
+
+        {{ form_start(form, {
+            'attr': {
+                'class': 'was-validated',
+                'id': 'calculate_form',
+                'novalidate': 'novalidate'
+            }
+        }) }}
+
+{#        <form id="calculate_form" class="was-validated" action="{{ path('default')}}">#}
+
+            <div class="form-group">
+                {{ form_label(form.postal_address, 'Postal Address', {'label_attr': {'class': ''}}) }}
+                {{ form_widget(form.postal_address, { 'attr': {'class': 'form-control', 'placeholder': 'Enter Postal address', 'required': 'true'} }) }}
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.ip_address, 'IP Address', {'label_attr': {'class': ''}}) }}
+                {{ form_widget(form.ip_address, { 'attr': {'class': 'form-control', 'placeholder': 'Enter IP address', 'required': 'true'} }) }}
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
