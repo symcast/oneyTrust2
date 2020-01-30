@@ -9,7 +9,7 @@ Afin de mettre en place cette application, il faut
 2. Lancer la commande **docker-compose build**
 3. Lancer la commande **docker-compose up -d**
 
-On aura 2 conteneur dont chacun represente l'environnement d'execution d'une application.
+On aura 2 conteneurs dont chacun represente l'environnement d'execution d'une application.
 
 1. **api_container** : un conteneur contenant une api contenant les fonctions developpées pour le calcul de la distance en KM
 2. **front_container** : un conteneur danslequel s'execute une application representant le point d'interraction avec l'utilisateur : recuperation des parameteres requis (adresse postale & adresse IP) et consommation de des focntions exposées par un API execute sur un autre conteneur pour afficher le resultat en KM.
