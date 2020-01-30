@@ -12,32 +12,41 @@
     <div class="example-wrapper">
 
 
-        {{ form_start(form, {
+        {{
+        form_start(form, {
             'attr': {
                 'class': 'was-validated',
                 'id': 'calculate_form',
                 'novalidate': 'novalidate'
             }
-        }) }}
-
-{#        <form id="calculate_form" class="was-validated" action="{{ path('default')}}">#}
-
-            <div class="form-group">
-                {{ form_label(form.postal_address, 'Postal Address', {'label_attr': {'class': ''}}) }}
-                {{ form_widget(form.postal_address, { 'attr': {'class': 'form-control', 'placeholder': 'Enter Postal address', 'required': 'true'} }) }}
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
+        })
+        }}
+            <div class="form-group row">
+                {{ form_label(form.postal_address, 'Postal Address', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                <div class="col-sm-7">
+                    {{ form_widget(form.postal_address, { 'attr': {'class': 'form-control is-invalid', 'placeholder': 'Enter Postal address', 'required': 'true'} }) }}
+                </div>
+                <div class="col-sm-3">
+                    <small id="passwordHelp" class="text-danger">
+                        Must be 8-20 characters long.
+                    </small>
+                </div>
             </div>
 
-            <div class="form-group">
-                {{ form_label(form.ip_address, 'IP Address', {'label_attr': {'class': ''}}) }}
-                {{ form_widget(form.ip_address, { 'attr': {'class': 'form-control', 'placeholder': 'Enter IP address', 'required': 'true'} }) }}
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="form-group row">
+                {{ form_label(form.ip_address, 'IP Address', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                <div class="col-sm-7">
+                    {{ form_widget(form.ip_address, { 'attr': {'class': 'form-control is-invalid', 'placeholder': 'Enter IP address', 'required': 'true'} }) }}
+                </div>
+                <div class="col-sm-3">
+                    <small id="passwordHelp" class="text-danger">
+                        Must be 8-20 characters long.
+                    </small>
+                </div>
             </div>
 
             <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
-        {{ form_end(form) }}
+            {{ form_end(form) }}
 
     </div>
 

@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Service\AddressService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\CalculateDistanceType;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class DefaultController extends AbstractController
+class DefaultController extends ParentController
 {
     /** @var AddressService */
     private $addressService;
@@ -43,6 +45,8 @@ class DefaultController extends AbstractController
                 );
 
                 return new JsonResponse(['distance' => $distance]);
+            } else {
+                return new JsonResponse($this->getErrorsFromForm($form), Response::HTTP_BAD_REQUEST);
             }
         }
 
