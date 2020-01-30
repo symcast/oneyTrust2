@@ -27,8 +27,7 @@
                     {{ form_widget(form.postal_address, { 'attr': {'class': 'form-control is-invalid', 'placeholder': 'Enter Postal address', 'required': 'true'} }) }}
                 </div>
                 <div class="col-sm-3">
-                    <small id="passwordHelp" class="text-danger">
-                        Must be 8-20 characters long.
+                    <small id="postal_address_error" class="text-error text-danger" style="font-size:70%;">
                     </small>
                 </div>
             </div>
@@ -39,13 +38,19 @@
                     {{ form_widget(form.ip_address, { 'attr': {'class': 'form-control is-invalid', 'placeholder': 'Enter IP address', 'required': 'true'} }) }}
                 </div>
                 <div class="col-sm-3">
-                    <small id="passwordHelp" class="text-danger">
-                        Must be 8-20 characters long.
+                    <small id="ip_address_error" class="text-error text-danger" style="font-size:70%;">
                     </small>
                 </div>
             </div>
 
-            <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
+        <div class="form-group row">
+            <div class="col-sm-3">
+                <button type="submit" id="submit-btn" class="btn btn-primary">Calculate</button>
+            </div>
+            <div id="distance" style="display:none;">
+                    La distance est : <span style="color:#1C440C;font-weight:bold;"></span> KM
+            </div>
+        </div>
             {{ form_end(form) }}
 
     </div>

@@ -44,9 +44,14 @@ class DefaultController extends ParentController
                     $form['ip_address']->getData()
                 );
 
-                return new JsonResponse(['distance' => $distance]);
+                return new JsonResponse(['result' => 'ok','distance' => $distance]);
             } else {
-                return new JsonResponse($this->getErrorsFromForm($form), Response::HTTP_BAD_REQUEST);
+                return new JsonResponse(
+                    [
+                        'result' => 'ko',
+                        'errors' =>   $this->getErrorsFromForm($form)
+                    ]
+                );
             }
         }
 

@@ -4,6 +4,14 @@ $(document).ready(function () {
 
         e.preventDefault();
 
+        let $_this = $(this);
+
+        $_this.attr("disabled", true);
+
+        //RAZ
+        $('.text-error').html('');
+        $('#distance').hide();
+
         let $form = $('#calculate_form');
 
         $.ajax({
@@ -12,23 +20,18 @@ $(document).ready(function () {
             data: $form.serialize(),
             dataType: 'json',
             success: function(data, statut){ // success est toujours en place, bien sûr !
-                console.log('success');
+                $_this.attr("disabled", false);
+                if(data.result == 'ok') {
+                    $("span", "#distance").html(data.distance);
+                    $("#distance").show();
+                } else {
+                    Object.keys(data.errors).forEach(key => {
+                        let value = data.errors[key];
+                        $("#"+key+"_error").html(value).show();
+
+                    });
+                }
             },
         });
     });
-
-    // $('#calculate_form').submit(function(e) {
-    //
-    //     e.preventDefault();
-    //
-    //     var url = $('#calculate_form').attr('action');
-    //     var formSerialize = $('#calculate_form').serialize();
-    //
-    //     $.post(url, formSerialize, function(response) {
-    //         //your callback here
-    //         alert(response);
-    //     }, 'JSON');
-    // });
-
-
 });
