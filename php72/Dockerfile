@@ -30,7 +30,7 @@ RUN a2enmod rewrite && service apache2 restart
 
 # On créé un utilisateur avec le même gid/uid que votre local
 # cela va permettre que les fichiers qui sont créés dans le contenaire auront vos droits
-RUN addgroup --system ninja --gid 1000 && adduser --system ninja --uid 1000 --ingroup ninja
+#RUN addgroup --system ninja --gid 1000 && adduser --system ninja --uid 1000 --ingroup ninja
 
 # le repertoire qui contient vos sources (attention : dans le contenaire, donc le repertoire à droite du mapping du docker-compose)
 WORKDIR /var/www/
